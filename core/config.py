@@ -10,7 +10,7 @@ class Config(BaseSettings):
     ENV: str = "development"
     DEBUG: bool = True
     APP_HOST: str = os.getenv("APP_HOST", "localhost")
-    APP_PORT: int = os.getenv("APP_PORT", "8000")
+    APP_PORT: int = os.getenv("APP_PORT", "9000")
     # database
     MONGO_URI: str = os.getenv("MONGO_URI", "mongodb://localhost:27017")
     MONGO_DATABASE: str = os.getenv("MONGO_DATABASE", "biwoco_test")
