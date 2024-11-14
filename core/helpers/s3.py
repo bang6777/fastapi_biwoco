@@ -25,7 +25,7 @@ class S3Helper:
 
         try:
             self.s3_client.put_object(
-                Bucket=config.AWS_S3_BUCKET_NAME,
+                Bucket=config.AWS_S3_BUCKET,
                 Key=unique_file_name,
                 Body=file_data,
                 ContentType=content_type,

@@ -14,6 +14,15 @@ To run the application, follow these steps:
     pip install -r requirements.txt
     python main.py --env local
     ```
+3. To run the application using Docker, follow these steps:
+
+    ```bash
+    cd docker
+    docker-compose build
+    docker-compose up -d
+    ```
+
+This will build the Docker image and run the FastAPI application in a container. You can access it at `http://127.0.0.1:8000/docs`.
 
 This will start the FastAPI application and you can access it at `http://127.0.0.1:8000/docs`.
 

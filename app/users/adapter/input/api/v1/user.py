@@ -11,7 +11,7 @@ from core.helpers.s3 import S3Helper
 from core.exceptions.custom_exception import CustomException
 from core.db.redis.redis_client import RedisClient
 
-from app.users.adapter.input.api.v1.request import LoginRequest, IdRequest
+from app.users.adapter.input.api.v1.request import LoginRequest, DeleteUserRequest, RegisterRequest
 from app.users.adapter.input.api.v1.response import LoginResponse
 
 user_router = APIRouter()
@@ -26,9 +26,9 @@ async def get_me(request: Request):
 @user_router.post("/register")
 @inject
 async def register_user(
-    email: str, password: str, user_service: UserService = Depends(Provide[Container.user_service])
+    request: RegisterRequest, user_service: UserService = Depends(Provide[Container.user_service])
 ):
-    return await user_service.register_user(email, password)
+    return await user_service.register_user(request.email, request.password)
 
 
 @user_router.post("/login", response_model=LoginResponse)
@@ -42,7 +42,7 @@ async def login_user(
 @user_router.delete("/delete-user", dependencies=[Depends(PermissionDependency([IsAdmin]))],)
 @inject
 async def delete_user(
-    request: IdRequest, user_service: UserService = Depends(Provide[Container.user_service])
+    request: DeleteUserRequest, user_service: UserService = Depends(Provide[Container.user_service])
 ):
     return await user_service.delete_user(request.user_id)
 
@@ -54,7 +54,8 @@ async def upload_image(
     try:
         # Read file data
         file_data = await file.read()
-
+        print("config.AWS_ACCESS_KEY", config.AWS_ACCESS_KEY)
+        print("config.AWS_SECRET_KEY", config.AWS_SECRET_KEY)
         s3_helper = S3Helper(aws_access_key=config.AWS_ACCESS_KEY, aws_secret_key=config.AWS_SECRET_KEY, aws_region=config.AWS_REGION)
         
         # Upload file to S3
@@ -63,8 +64,8 @@ async def upload_image(
         # Return the file URL
         return {"file_url": file_url}
     except Exception as e:
-        capture_exception(e)
-        raise CustomException(code=500, error_code="FILE__UPLOAD_FAILED", message="Failed to upload image")
+        print("Error: ", e)
+        raise CustomException(code=400, error_code="FILE__UPLOAD_FAILED", message="Failed to upload image")
 
 @user_router.get("/activate")
 @inject
