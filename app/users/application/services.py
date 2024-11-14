@@ -121,5 +121,5 @@ class UserService:
         custom_data = {
             "is_active": True
         }
-        await self.repo.update_user(user_id, custom_data)
-        return user 
+        update_user = await self.repo.update_user(user_id, custom_data)
+        return update_user

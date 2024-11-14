@@ -48,8 +48,6 @@ class UserRepository:
         """Update a user document."""
         if not ObjectId.is_valid(user_id):
             return None
-        if "_id" in update_data:
-            del update_data["_id"]
         await self.user_collection.update_one({"_id": ObjectId(user_id)}, {"$set": update_data})
         updated_user = await self.find_by_id(user_id)
         return updated_user

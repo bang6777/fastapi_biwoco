@@ -1,25 +1,7 @@
 # 1. Setup and Enviroment 
-## fastapi_biwoco
-```
-## Running Tests with Pytest
 
-To run tests using pytest, follow these steps:
-
-1. Install pytest if you haven't already:
-    ```bash
-    pip install pytest
-    ```
-
-2. Navigate to the root directory of your project.
-
-3. Run pytest:
-    ```bash
-    pytest
-    ```
-
-This will automatically discover and run all the test files in your project.
-```
-
+## Enviroment
+Python 3.12
 
 ## Running the Application
 
@@ -29,6 +11,7 @@ To run the application, follow these steps:
 
 2. Run the following command:
     ```bash
+    pip install -r requirements.txt
     python main.py --env local
     ```
 
@@ -106,6 +89,12 @@ fastapi_biwoco/
 ├── .env                                    # Environment variables
 ```
 
+
+- A clear and organized source code structure to meet specific requirements.
+- Sentry integration for efficient error monitoring and resolution.
+- Redis for managing user authentication workflows securely and efficiently.
+- Celery for handling both background and recurring tasks, thereby improving application performance and user experience.
+- dependency injection has been applied to facilitate easier management and inject of components 
 
 
 # 3. Test 2
