@@ -54,8 +54,6 @@ async def upload_image(
     try:
         # Read file data
         file_data = await file.read()
-        print("config.AWS_ACCESS_KEY", config.AWS_ACCESS_KEY)
-        print("config.AWS_SECRET_KEY", config.AWS_SECRET_KEY)
         s3_helper = S3Helper(aws_access_key=config.AWS_ACCESS_KEY, aws_secret_key=config.AWS_SECRET_KEY, aws_region=config.AWS_REGION)
         
         # Upload file to S3

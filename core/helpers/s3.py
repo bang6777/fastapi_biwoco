@@ -29,7 +29,6 @@ class S3Helper:
                 Key=unique_file_name,
                 Body=file_data,
                 ContentType=content_type,
-                ACL="public-read",
             )
             return f"{config.AWS_S3_URL}{unique_file_name}"
         except NoCredentialsError as e:
