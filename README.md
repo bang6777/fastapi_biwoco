@@ -11,6 +11,22 @@ To run the application, follow these steps:
 
 2. Run the following command:
     ```bash
+    touch .env
+    echo "DATABASE_URL=mongodb://localhost:27017" >> .env
+    echo "REDIS_URL=redis://localhost:6379" >> .env
+    echo "SECRET_KEY=your_secret_key" >> .env
+    echo "SENTRY_DSN=your_sentry_dsn" >> .env
+    echo "APP_HOST=0.0.0.0" >> .env
+    echo "APP_PORT=8000" >> .env
+    echo "MONGO_URI=mongodb://localhost:27017/biwoco_test" >> .env
+    echo "DATABASE_NAME=biwoco_test" >> .env
+    echo "AWS_S3_BUCKET=biwoco" >> .env
+    echo "AWS_ACCESS_KEY_ID=YOUR_AWS_ACCESS_KEY_ID" >> .env
+    echo "AWS_SECRET_ACCESS_KEY=YOUR_AWS_SECRET_ACCESS_KEY" >> .env
+    echo "AWS_REGION=YOUR_AWS_REGION" >> .env
+    echo "SENTRY_DSN=YOUR_SENTRY_DSN" >> .env
+    echo "MAIL_CONTACT=YOUR_MAIL_CONTACT" >> .env
+
     pip install -r requirements.txt
     python main.py --env local
     ```
