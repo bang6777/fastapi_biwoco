@@ -101,7 +101,7 @@ class UserService:
 
     async def login_user(self, email: str, password: str) -> LoginResponseDTO:
         user = await self.repo.find_by_email(email)
-        if not user or not pwd_context.verify(password, user["password"]):
+        if not user or not pwd_context.verify(password, user["password"]) or not user["is_active"]:
             raise CustomException(
                 code=401, error_code="AUTH__INVALID_CREDENTIALS", message="Invalid credentials")
 
