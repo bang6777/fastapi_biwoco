@@ -37,6 +37,11 @@ To run the application, follow these steps:
     docker-compose build
     docker-compose up -d
     ```
+4. public account admin (It just generate by admin in first time)
+    ```
+    email: bang98.2016@gmail.com
+    password: @Poiuy09876
+    ```
 
 This will build the Docker image and run the FastAPI application in a container. You can access it at `http://127.0.0.1:8000/docs`.
 
